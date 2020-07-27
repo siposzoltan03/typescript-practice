@@ -3,8 +3,11 @@ import './Board.css';
 
 export default function Board() {
     return (
-        <div className='board'>
-            
-        </div>
+        <section className="board">
+            <div className="board-header"><span className="board-title">Board 1</span>
+                <button className="board-add">Add Card</button>
+                <button className="board-toggle"><i className="fas fa-chevron-down"></i></button>
+            </div>
+            </section>
     )
 }

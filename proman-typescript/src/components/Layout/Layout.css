@@ -22,3 +22,8 @@ h1{
     letter-spacing: 5px;
     transform: scale(1.2, 1);
 }
+
+.board-container{
+    max-width: 960px;
+    margin: 0 auto;
+}

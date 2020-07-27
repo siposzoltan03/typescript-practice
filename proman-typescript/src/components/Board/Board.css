@@ -1,0 +1,43 @@
+section.board{
+    margin: 20px;
+    border: aliceblue;
+    background: #ffffff90;
+    border-radius: 3px;
+}
+
+.board-header{
+    height: 50px;
+    background: #fff;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.board-title{
+    position: absolute;
+    left: 20px;
+    margin: 13px;
+    display: inline-block;
+    font-size: 20px;
+}
+.board-title, .board-add, .board-toggle{
+    display: inline-block;
+}
+
+.board-add{
+    position: relative;
+    left: 600px;
+    top: 13px;
+}
+
+.board-toggle{
+    float: right;
+    margin: 13px;
+}
+
+button{
+    background: #222;
+    color: #fff;
+    border: none;
+    font-size: 14px;
+    font-family: sans-serif;
+    padding: 4px 10px;
+}
