@@ -5,6 +5,11 @@ section.board{
     border-radius: 3px;
 }
 
+.board-column-container{
+    display: inline-flex;
+    align-content: space-between;
+}
+
 .board-header{
     height: 50px;
     background: #fff;
