@@ -1,0 +1,10 @@
+.board{
+    background-color: rgba(127, 126, 160, 0.993);
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 50px;
+    height: 300px;
+    width: auto;
+    box-shadow: black 5px 5px 5px;
+    border-radius: 5px;
+}
