@@ -23,3 +23,19 @@
 .board-column-title{
     text-align: center;
 }
+
+/* .board-column:nth-of-type(1) .card{
+    background: var(--status-1);
+}
+
+.board-column:nth-of-type(2) .card{
+    background: var(--status-2);
+}
+
+.board-column:nth-of-type(3) .card{
+    background: var(--status-3);
+}
+
+.board-column:nth-of-type(4) .card{
+    background: var(--status-4); */
+/* } */
