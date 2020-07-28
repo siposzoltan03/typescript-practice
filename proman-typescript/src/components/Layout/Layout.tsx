@@ -9,10 +9,14 @@ interface Props{
 
 export default function Layout<Props>(): JSX.Element {
     return (
-        <div>
-            <h1>Proman</h1>
-            <div className="board-container"></div>
-            <Board/>
+        <div className="container">
+            <div className="title-line">
+                <div className="title">Proman</div>
+                <button className="add-board">Add Board</button>
+                </div>
+            <div className="board-container">
+                <Board />
+            </div>
         </div>
     )
 }
