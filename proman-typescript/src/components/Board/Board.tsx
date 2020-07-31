@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import "./Board.css";
 import BoardColumn from "../BoardColumn/BoardColumn";
 import Card from "../Card/Card";
@@ -11,30 +11,44 @@ interface Props {
 }
 
 const Board = ({ boardColumnIds, boardName, boardId }: Props) => {
+	const [hidden, setHidden] = useState<boolean>(false);
+
+	const handleToggle = (): void => {
+		hidden ? setHidden(false) : setHidden(true);
+	};
+
 	return (
 		<section className="board">
 			<div className="board-header">
 				<span className="board-title">{boardName}</span>
 				<button className="board-add">Add Card</button>
-				<button className="board-toggle">
-					<i className="fas fa-chevron-down"></i>
+				<button className="board-toggle" onClick={handleToggle}>
+					<i
+						className={
+							hidden ? "fas fa-chevron-down" : "fas fa-chevron-up"
+						}
+					></i>
 				</button>
 			</div>
-			<div className="board-columns">
-				{boardColumnIds.map((columnId) =>
-					columns.map((column, index) => {
-						if (columnId === column.id)
-							return (
-								<BoardColumn
-									title={column.title}
-									cardIds={column.cardIds}
-									boardId={boardId}
-									key={index}
-								/>
-							);
-					}),
-				)}
-			</div>
+			{hidden ? (
+				<Fragment></Fragment>
+			) : (
+				<div className="board-columns">
+					{boardColumnIds.map((columnId) =>
+						columns.map((column, index) => {
+							if (columnId === column.id)
+								return (
+									<BoardColumn
+										title={column.title}
+										cardIds={column.cardIds}
+										boardId={boardId}
+										key={index}
+									/>
+								);
+						}),
+					)}
+				</div>
+			)}
 		</section>
 	);
 };
