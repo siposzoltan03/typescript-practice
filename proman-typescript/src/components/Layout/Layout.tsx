@@ -25,7 +25,8 @@ export default function Layout<Props>(): JSX.Element {
 						<Board
 							key={index}
 							boardName={board.title}
-							boardColumns={columns}
+							boardColumnIds={board.columnIds}
+							boardId={board.id}
 						/>
 					);
 				})}
