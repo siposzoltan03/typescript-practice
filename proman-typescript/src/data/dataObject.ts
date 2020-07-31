@@ -13,6 +13,7 @@ interface column {
 interface card {
 	id: number;
 	title: string;
+	boardId: number;
 }
 export const boards: Array<board> = [
 	{
@@ -30,7 +31,7 @@ export const columns: Array<column> = [
 	{
 		id: 1,
 		title: "Todo",
-		cardIds: [1, 2, 3, 4, 5],
+		cardIds: [1, 2, 3, 4],
 	},
 	{
 		id: 2,
@@ -50,28 +51,33 @@ export const columns: Array<column> = [
 	{
 		id: 5,
 		title: "Done",
-		cardIds: [1, 2, 3, 4, 5],
+		cardIds: [1, 2, 3, 4],
 	},
 ];
 export const cards: Array<card> = [
 	{
 		id: 1,
 		title: "Card 1",
+		boardId: 1,
 	},
 	{
 		id: 2,
-		title: "Card 1",
+		title: "Card 2",
+		boardId: 1,
 	},
 	{
 		id: 3,
-		title: "Card 1",
+		title: "Card 3",
+		boardId: 1,
 	},
 	{
 		id: 4,
-		title: "Card 1",
+		title: "Card 4",
+		boardId: 2,
 	},
 	{
 		id: 5,
-		title: "Card 1",
+		title: "Card 5",
+		boardId: 2,
 	},
 ];
