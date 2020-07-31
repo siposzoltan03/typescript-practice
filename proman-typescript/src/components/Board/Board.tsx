@@ -1,8 +1,8 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, ChangeEvent } from "react";
 import "./Board.css";
 import BoardColumn from "../BoardColumn/BoardColumn";
 import Card from "../Card/Card";
-import { cards, columns } from "../../data/dataObject";
+import { cards, columns, column, boards, board } from "../../data/dataObject";
 import { utils } from "../../utils/utils";
 
 interface Props {
@@ -15,8 +15,11 @@ const FIRST_COLUMN = 0;
 
 const Board = ({ boardColumnIds, boardName, boardId }: Props) => {
 	const [hidden, setHidden] = useState<boolean>(false);
-	const [columnsState, setColumnsState] = useState(columns);
+	const [columnsState, setColumnsState] = useState<column[]>(columns);
 	const [cardsState, setCardsState] = useState(cards);
+	const [editName, setEditName] = useState<boolean>(false);
+	const [boardsState, setBoardsState] = useState<board[]>(boards);
+	const [boardNameState, setBoardNameState] = useState<string>(boardName);
 
 	const handleToggle = (): void => {
 		hidden ? setHidden(false) : setHidden(true);
@@ -34,10 +37,41 @@ const Board = ({ boardColumnIds, boardName, boardId }: Props) => {
 		setColumnsState(newColumnsState);
 	};
 
+	const handleEditName = (): void => {
+		setEditName(!editName);
+	};
+
+	const handleNameChange = (
+		boardId: number,
+		e: ChangeEvent<HTMLInputElement>,
+	): void => {
+		const newBoardsState = [...boardsState];
+		setBoardNameState(e.target.value);
+		newBoardsState[boardId - 1].title = boardNameState;
+		setBoardsState(newBoardsState);
+	};
+
 	return (
 		<section className="board">
 			<div className="board-header">
-				<span className="board-title">{boardName}</span>
+				{editName ? (
+					<input
+						className="board-title"
+						onBlur={handleEditName}
+						type="text"
+						autoFocus
+						value={boardNameState}
+						onChange={(e) => handleNameChange(boardId, e)}
+					></input>
+				) : (
+					<span
+						className="board-title"
+						onDoubleClick={handleEditName}
+					>
+						{boardNameState}
+					</span>
+				)}
+
 				<button className="board-add" onClick={handleAddCard}>
 					Add Card
 				</button>
