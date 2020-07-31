@@ -1,16 +1,16 @@
-interface board {
+export interface board {
 	id: number;
 	title: string;
 	columnIds: number[];
 }
 
-interface column {
+export interface column {
 	id: number;
 	title: string;
 	cardIds: number[];
 }
 
-interface card {
+export interface card {
 	id: number;
 	title: string;
 	boardId: number;
