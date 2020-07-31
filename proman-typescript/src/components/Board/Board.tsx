@@ -2,14 +2,15 @@ import React, { useState } from "react";
 import "./Board.css";
 import BoardColumn from "../BoardColumn/BoardColumn";
 import Card from "../Card/Card";
-import { cards } from "../../data/dataObject";
+import { cards, columns } from "../../data/dataObject";
 
 interface Props {
-	boardColumns: Array<{ id: number; title: string; cardIds: number[] }>;
+	boardColumnIds: Array<number>;
 	boardName: string;
+	boardId: number;
 }
 
-const Board = ({ boardColumns, boardName }: Props) => {
+const Board = ({ boardColumnIds, boardName, boardId }: Props) => {
 	return (
 		<section className="board">
 			<div className="board-header">
@@ -20,24 +21,18 @@ const Board = ({ boardColumns, boardName }: Props) => {
 				</button>
 			</div>
 			<div className="board-columns">
-				{boardColumns?.map(
-					(
-						boardColumn: {
-							id: number;
-							title: string;
-							cardIds: number[];
-						},
-						index: number,
-					) => {
-						console.log(boardColumn.title);
-						return (
-							<BoardColumn
-								title={boardColumn.title}
-								cards={boardColumn.cardIds}
-								key={index}
-							/>
-						);
-					},
+				{boardColumnIds.map((columnId) =>
+					columns.map((column, index) => {
+						if (columnId === column.id)
+							return (
+								<BoardColumn
+									title={column.title}
+									cardIds={column.cardIds}
+									boardId={boardId}
+									key={index}
+								/>
+							);
+					}),
 				)}
 			</div>
 		</section>
